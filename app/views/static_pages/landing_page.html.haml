@@ -1,16 +1,64 @@
-.container
-  %h1 Hello World
-  .card{:style => "width: 18rem;"}
-    %img.card-img-top{:alt => "...", :src => "..."}/
-    .card-body
-      %h5.card-title Card title
-      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
-      %a.btn.btn-primary{:href => "#"} Go somewhere
-  %i.fas.fa-home
-  %br/
-  = link_to  privacy_policy_path, class: "btn btn-lg btn-warning" do
-    %i.fas.fa-file-word
-    Privacy Policy
-  = link_to  courses_path, class: "btn btn-lg btn-success" do
-    %i.fa.fa-book
-    Course
+.jumbotorn
+  .display-4
+    What do you wanna leran today?
+
+  .p-4 
+
+  .form-inline.my-2.my-lg-0
+    = form_tag(courses_path, method: :get) do
+      .input-group
+        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
+        %div.input-group-append
+          %button.btn.btn-primary{:type => "submit"}
+            %i.fa.fa-search{"aria-hidden" => "true"}
+%br/
+%hr
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count
+    online courses
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Course.distinct.count(:user_id)
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+%hr
+%h2
+  Popuar Courses 
+.row
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr 
+%h2
+  Top Rated Courses 
+.row
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+%h2
+  Latest Courses
+.row 
+  - @latest_courses .each do |course|
+    = render 'courses/course', course: course
+%hr
