@@ -8,7 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.action_mailer.default_url_options = { host: 'skillzup.herokuapp.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { host: 'locolhost:3000', :protocol => 'https' }
   config.action_mailer.delivery_method = :test
   
   # Do not eager load code on boot.
