@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@skillzup.herokuapp.com'
+  default from: 'zakwan_bhaiyat@yahoo.com'
   layout 'mailer'
 end

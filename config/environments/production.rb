@@ -8,6 +8,23 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: 'email-smtp.us-east-1.amazonaws.com',
+    user_name: 'SMTP_CREDENTIALS_USER_NAME',
+    password: 'SMTP_CREDENTIALS_PASSWORD',
+    authentication: :plain,
+    enable_starttls_auto: true
+}
+
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+email: {
+  deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+  email_prefix: "[PREFIX] ",
+  sender_address: %("skillzup error" <zakwan_bhaiyat@yahoo.com>),
+  exception_recipients: %w[zakwanbhaiyat23@gmail.com]
+}
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true
