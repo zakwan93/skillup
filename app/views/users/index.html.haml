@@ -1,3 +1,10 @@
+%h3
+    .text-center
+        Users
+        .badge.bg-info
+            = @users.count
+%p
+
 .card-columns 
     .row 
         - @users.each do |user|

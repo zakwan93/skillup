@@ -1,16 +1,25 @@
-.jumbotorn
+.jumbotorn.jumbotran-bg.p-4
   .display-4
     What do you wanna leran today?
 
   .p-4 
 
-  .form-inline.my-2.my-lg-0
-    = form_tag(courses_path, method: :get) do
-      .input-group
-        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
-        %div.input-group-append
-          %button.btn.btn-primary{:type => "submit"}
-            %i.fa.fa-search{"aria-hidden" => "true"}
+  -# .form-inline.my-2.my-lg-0
+  -#   = form_tag(courses_path, method: :get) do
+  -#     .input-group
+  -#       = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
+  -#       %div.input-group-append
+  -#         %button.btn.btn-primary{:type => "submit"}
+  -#           %i.fa.fa-search{"aria-hidden" => "true"}
+
+  - if current_user
+    .form-inline.my-2.my-lg-0
+      = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+        .input-group
+          = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Search', :autocomplete => :off
+          %span.input-group-append
+            %button.btn.btn-primary.btn-sm{:type => "submit"}
+              %span.fa.fa-search{"aria-hidden" => "true"}
 %br/
 %hr
 .card-group
