@@ -22,4 +22,13 @@ class Course < ApplicationRecord
         self.price ||= 0
     end
 
+    LANGUAGES = [:'English', :"Spanish", :"Hindi"]
+    def self.languages
+        LANGUAGES.map {|language| [language, language]}
+    end
+
+    LEVELS = [:"Beginner", :"Intermediate", :"Advanced"]
+    def self.levels
+        LEVELS.map { |level| [level, level] }
+    end
 end
