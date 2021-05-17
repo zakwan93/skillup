@@ -13,9 +13,11 @@
   = render 'layouts/header'
   = render 'layouts/messages'
   .container
-    %p.notice
-      = notice
-    %p.alert
-      = alert
+    -# %p.notice
+    -#   = notice
+    -# %p.alert
+    -#   = alert
+    %p
     = yield
   %br
+  = render 'layouts/footer'

@@ -60,6 +60,11 @@ gem 'simple_form'
 gem 'faker'
 gem 'devise'
 gem 'friendly_id', '~> 5.4.0'
+<<<<<<< HEAD
+=======
+gem 'ransack'
+gem 'public_activity'
+>>>>>>> mvpsetup
 gem 'exception_notification'
 gem 'ransack'
 

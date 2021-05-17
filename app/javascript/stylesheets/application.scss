@@ -4,3 +4,8 @@
 .form-control.is-valid {
   background-image: none;
 }
+
+.jumbotran-bg {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
