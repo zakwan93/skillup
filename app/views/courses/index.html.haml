@@ -1,10 +1,34 @@
 %h1
   Courses:
-  \#{@courses.count}
+  = @courses.count
 
-.card-column
-  .row
-    - @courses.each do |course|
-      = render 'courses/course', course: course   
+.row 
+  .col-md-2.border.h-100.pb-4.pt-2
+    -# = search_form_for @q do |f|
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+      = f.label :title
+      = f.search_field :title_cont, placeholder: 'Title', class: 'form-control form-control-sm'
+      = f.label :short_description
+      = f.search_field :short_description_cont, placeholder: 'Short Description', class: 'form-control form-control-sm'
+      -# = f.search_field :language_cont, placeholder: 'Language', class: 'form-control form-control-sm'
+      -# = f.select :language_cont, collection: Course.languages
+      = f.label :language
+      = f.select :language_cont, Course.languages, include_blank: true, class: 'form-control form-control-sm'
+      -# = f.search_field :level_cont, placeholder: 'Level', class: 'form-control form-control-sm'
+      = f.label :level
+      = f.select :level_cont, Course.levels, include_blank: true, class: 'form-control form-control-sm'
+      = f.label :price
+      = f.search_field :price_eq, placeholder: 'Price', class: 'form-control form-control-sm'
+      = f.label :Instrutor
+      = f.search_field :user_email_cont, placeholder: 'Email', class: 'form-control form-control-sm mb-2'
+      = f.submit
+    = link_to 'refresh', courses_path, class: 'pt-2'
+  .col-md-10 
+    .card-column
+      .row
+        - @courses.each do |course|
+          = render 'courses/course', course: course   
+
+
 %br/
 
