@@ -11,4 +11,7 @@ class Role < ApplicationRecord
             :allow_nil => true
 
   scopify
+
+  validates_precense_of :name
+  validates_uniqness_of :name
 end
