@@ -26,15 +26,16 @@
                 .col-md-6
                     .fa.fa-chalkboard-teacher
                     = course.user.username
-        .card-footer 
-            .row 
-                .col-md-4 
-                    .d-flex.justify-content-start
-                        = link_to 'Show', course, class: 'btn btn-small btn-primary text-white'
-                .col-md-4
-                    .d-flex.justify-content-center
-                        = link_to 'Edit', edit_course_path(course), class: 'btn btn-small btn-warning text-white'
-                .col-md-4
-                    .d-flex.justify-content-end
-                        = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger text-white'
-            
+        - if policy(course).edit?
+            .card-footer 
+                .row 
+                    .col-md-4 
+                        .d-flex.justify-content-start
+                            = link_to 'Show', course, class: 'btn btn-small btn-primary text-white'
+                    .col-md-4
+                        .d-flex.justify-content-center
+                            = link_to 'Edit', edit_course_path(course), class: 'btn btn-small btn-warning text-white'
+                    .col-md-4
+                        .d-flex.justify-content-end
+                            = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger text-white'
+                
