@@ -12,6 +12,6 @@ class Role < ApplicationRecord
 
   scopify
 
-  validates_precense_of :name
-  validates_uniqness_of :name
+  validates_presence_of :name
+  validates_uniqueness_of :name
 end
